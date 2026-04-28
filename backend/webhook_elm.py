@@ -1,24 +1,28 @@
 from flask import Flask, request, jsonify
 
+
+token_verif = 'elm2026'
 app = Flask(__name__)
 @app.route('/webhook', methods=['POST', 'GET'])
 def webhook_elm():
 
-    if request.method == 'POST':
-        data = request.json
-
-        print('Received POST data: ', data)
-
-        return jsonify({
-            'message':'Berhasil terima post webhook'
-        })
     
-    elif request.method == 'GET':
+    if request.method == 'GET':
+        
+        token = request.args.get('hub.verify_token')
+        print(token)
+        challenge = request.args.get('hub.challenge')
+        print(challenge)
+        if token == token_verif:
+            return challenge, 200
+        
+        else:
+            return "failed", 403
+        
+    elif request.method == 'POST':
         data = request.json
-        print('Received Get Data: ', data)
-        return jsonify({
-            'message':'Berhasil terima get webhook'
-        })
+        print(data)
+        return data
 
 
 if __name__ == '__main__':
