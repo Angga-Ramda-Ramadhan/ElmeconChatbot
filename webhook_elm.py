@@ -6,7 +6,7 @@ import os
 load_dotenv('.env')
 print(os.environ.get('VERIFY_TOKEN'))
 
-token_verif = 'elm2026'
+token_verif = os.environ.get('VERIFY_TOKEN')
 app = Flask(__name__)
 @app.route('/webhook', methods=['POST', 'GET'])
 def webhook_elm():
