@@ -1,5 +1,10 @@
 from flask import Flask, request, jsonify
-from 
+from dotenv import load_dotenv
+import os
+
+
+load_dotenv('.env')
+print(os.environ.get('VERIFY_TOKEN'))
 
 token_verif = 'elm2026'
 app = Flask(__name__)
@@ -25,5 +30,3 @@ def webhook_elm():
         return data
 
 
-if __name__ == '__main__':
-    app.run(host='88.222.215.217', debug=True, port=5004)
