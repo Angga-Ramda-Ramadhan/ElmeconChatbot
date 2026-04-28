@@ -22,4 +22,4 @@ def webhook_elm():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='88.222.215.217', debug=True)
