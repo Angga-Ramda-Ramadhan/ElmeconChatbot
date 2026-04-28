@@ -1,5 +1,11 @@
 # import pymysql
 import psycopg2
+from dotenv import load_dotenv
+import os
+
+load_dotenv('../../.env')
+
+
 
 def connection_db_mcp():
     # conn = pymysql.connect(
@@ -12,11 +18,11 @@ def connection_db_mcp():
     # )
 
     pg_config = {
-    'host': '188.166.224.240',
-    'user': 'angga',
-    'password': 'Elmecon2025',
-    'dbname': 'openbravo',
-    'port':5432
+    'host': os.environ.get('HOST_OB'),
+    'user': os.environ.get('USER_OB'),
+    'password': os.environ.get('PASS_OB'),
+    'dbname': os.environ.get('DB_OB'),
+    'port':os.environ.get('PORT_OB')
 }
 
     # --- Koneksi ke PostgreSQL dan tarik data ---

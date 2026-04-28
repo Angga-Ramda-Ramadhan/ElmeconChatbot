@@ -1,6 +1,6 @@
 # import pymysql
 import psycopg2
-
+from dotenv import load_dote
 
 def connection_db_mcp():
     # conn = pymysql.connect(
